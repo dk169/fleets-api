@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  fleets-api-service:
+    build:
+      context: .
+      target: development
+    volumes:
+      - /usr/src/app/dist
+      - /usr/src/app/node_modules
+      - .:/usr/src/app
+    ports:
+      - 3000:3000
+    command: npm run start:dev
+
+    networks:
+      - fleets-network
+networks:
+  fleets-network:
+volumes:
+  fleets-volume:
